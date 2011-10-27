@@ -304,6 +304,14 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
         slot = this.child('[name=daynight]');
         slot.setValue(daynightVal, animated);
         return this;
+    },
+
+    destroy: function() {
+        // now make sure after we destroy the widget the parent
+        // is not left masked
+        var parent = this.el.parent();
+        parent.unmask()
+        Ext.ux.touch.DateTimePicker.superclass.destroy.call(this);
     }
 });
 
