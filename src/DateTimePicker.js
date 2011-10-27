@@ -2,13 +2,13 @@ Ext.ns('Ext.ux.touch');
 Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
     /**
      * @cfg {Number} yearFrom
-     * The start year for the date picker.  Defaults to 1980
+     * The start year for the date picker.  Defaults to current year
      */
-    yearFrom: 2011,
+    yearFrom: new Date().getFullYear(),
 
     /**
      * @cfg {Number} yearTo
-     * The last year for the date picker.  Defaults to the current year.
+     * The last year for the date picker.  Defaults to the next year.
      */
     yearTo: new Date().getFullYear() + 1,
 
@@ -54,7 +54,7 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
     /**
      * @cfg {Object/Date} value
      * Default value for the field and the internal {@link Ext.ux.touch.DateTimePicker} component. Accepts an object of 'year',
-     * 'month' and 'day' values, all of which should be numbers, or a {@link Date}.
+     * 'month', 'day', 'hour' and 'minute' values, all of which should be numbers, or a {@link Date}.
      *
      * Examples:
      * {year: 1989, day: 1, month: 5} = 1st May 1989.
