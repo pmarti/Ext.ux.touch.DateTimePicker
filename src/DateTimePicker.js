@@ -145,7 +145,9 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
                 this.value = {
                     day: value.getDate(),
                     year: value.getFullYear(),
-                    month: value.getMonth() + 1
+                    month: value.getMonth() + 1,
+                    hour: value.getHours(),
+                    minute: value.getMinutes()
                 };
             } else if (Ext.isObject(value)) {
                 this.value = value;
