@@ -143,7 +143,7 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
 
             if (Ext.isDate(value)) {
                 this.value = {
-                    day: value.getDay(),
+                    day: value.getDate(),
                     year: value.getFullYear(),
                     month: value.getMonth() + 1
                 };
