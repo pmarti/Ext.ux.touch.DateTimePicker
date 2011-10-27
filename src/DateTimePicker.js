@@ -116,7 +116,7 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
             });
         }
 
-        for (i = 0; i < 60; i += 5) {
+        for (i = 0; i < 60; i += 1) {
             minutes.push({
                 text: i < 10 ? '0' + i : i,
                 value: i
@@ -270,9 +270,6 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
         now_values.month = now_date.getMonth() + 1;
         now_values.day = now_date.getDate();
         var mins = now_date.getMinutes();
-        if (mins % 5 > 0) {
-            mins = mins + (5 - (mins % 5));
-        }
         now_values.minute = mins;
         if (mins === 0 && now_date.getMinutes() > 0) {
             now_values.hour = now_date.getHours() + 1;
