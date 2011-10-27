@@ -50,11 +50,11 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
 
     /**
      * @cfg {Object/Date} value
-     * Default value for the field and the internal {@link Ext.DatePicker} component. Accepts an object of 'year', 
+     * Default value for the field and the internal {@link Ext.DatePicker} component. Accepts an object of 'year',
      * 'month' and 'day' values, all of which should be numbers, or a {@link Date}.
-     * 
+     *
      * Examples:
-     * {year: 1989, day: 1, month: 5} = 1st May 1989. 
+     * {year: 1989, day: 1, month: 5} = 1st May 1989.
      * new Date() = current date
      */
 
@@ -144,7 +144,7 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
                 };
             } else if (Ext.isObject(value)) {
                 this.value = value;
-            };
+            }
         }
         Ext.ux.touch.DateTimePicker.superclass.initComponent.call(this);
     },
@@ -280,12 +280,12 @@ Ext.reg('datetimepicker', Ext.ux.touch.DateTimePicker);
 
 Ext.ux.touch.DateTimePickerField = Ext.extend(Ext.form.Text, {
     ui: 'select',
-    
+
     // @cfg {Boolean} useMask @hide
     useMask: true,
 
     monitorOrientation: true,
-    
+
     // @private
     initComponent: function() {
         this.picker = new Ext.ux.touch.DateTimePicker({
@@ -295,8 +295,8 @@ Ext.ux.touch.DateTimePickerField = Ext.extend(Ext.form.Text, {
                 scope: this,
                 hide: function(picker) {
                     this.setValue(picker.getValue());
-                }   
-            }   
+                }
+            }
         });
 
         Ext.ux.touch.DateTimePickerField.superclass.initComponent.call(this);

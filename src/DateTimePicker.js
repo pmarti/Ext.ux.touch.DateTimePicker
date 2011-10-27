@@ -36,9 +36,9 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
      */
     hourText: 'Hour',
 
-	showYears: false,
-	
-	useShortMonthNames: true,
+    showYears: false,
+
+    useShortMonthNames: true,
     /**
      * @cfg {String} minuteText
      * The label to show for the minute column. Defaults to 'Minute'.
@@ -53,11 +53,11 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
 
     /**
      * @cfg {Object/Date} value
-     * Default value for the field and the internal {@link Ext.ux.touch.DateTimePicker} component. Accepts an object of 'year', 
+     * Default value for the field and the internal {@link Ext.ux.touch.DateTimePicker} component. Accepts an object of 'year',
      * 'month' and 'day' values, all of which should be numbers, or a {@link Date}.
-     * 
+     *
      * Examples:
-     * {year: 1989, day: 1, month: 5} = 1st May 1989. 
+     * {year: 1989, day: 1, month: 5} = 1st May 1989.
      * new Date() = current date
      */
 
@@ -85,13 +85,14 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
             yearsTo = tmp;
         }
 
-		if ( this.showYears ) {
-        for (i = yearsFrom; i <= yearsTo; i++) {
-            years.push({
-                text: i,
-                value: i
-            });
-        }}
+        if (this.showYears) {
+            for (i = yearsFrom; i <= yearsTo; i++) {
+                years.push({
+                    text: i,
+                    value: i
+                });
+            }
+        }
 
         daysInMonth = this.getDaysInMonth(1, new Date().getFullYear());
         for (i = 0; i < daysInMonth; i++) {
@@ -148,7 +149,7 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
                 };
             } else if (Ext.isObject(value)) {
                 this.value = value;
-            };
+            }
         }
         Ext.ux.touch.DateTimePicker.superclass.initComponent.call(this);
     },
@@ -238,16 +239,16 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
         if (value.daynight === 'PM') {
             value.hour += 12;
         }
-		if ( this.showYears ) {
-	        return new Date(value.year, value.month - 1, day, value.hour, value.minute);
-		} else {
-			var cur_date = new Date();
-			var full_year = cur_date.getFullYear();
-			if ( value.month -1  < cur_date.getMonth() ) {
-				full_year = full_year + 1;
-			}
-			return new Date(full_year, value.month - 1, day, value.hour, value.minute);
-		}
+        if (this.showYears) {
+            return new Date(value.year, value.month - 1, day, value.hour, value.minute);
+        } else {
+            var cur_date = new Date();
+            var full_year = cur_date.getFullYear();
+            if (value.month -1 < cur_date.getMonth()) {
+                full_year = full_year + 1;
+            }
+            return new Date(full_year, value.month - 1, day, value.hour, value.minute);
+        }
     },
 
     // @private
@@ -261,24 +262,24 @@ Ext.ux.touch.DateTimePicker = Ext.extend(Ext.Picker, {
         return !!((year & 3) === 0 && (year % 100 || (year % 400 === 0 && year)));
     },
 
-	setToDate: function(now_date) {
-		var now_values = {};
-		now_values['year'] = now_date.getFullYear();
-		now_values['month'] = now_date.getMonth() + 1;
-		now_values['day'] = now_date.getDate();
-		var mins = now_date.getMinutes();
-		if ( mins % 5 > 0 ) {
-			mins = mins + ( 5 - (mins % 5) );
-		}
-		now_values['minute'] = mins;
-		if ( mins === 0 && now_date.getMinutes() > 0 ) {
-			now_values['hour'] = now_date.getHours() + 1;
-		} else {
-			now_values['hour'] = now_date.getHours();
-		}
-		this.setValue(now_values);
-	},
-	
+    setToDate: function(now_date) {
+        var now_values = {};
+        now_values.year = now_date.getFullYear();
+        now_values.month = now_date.getMonth() + 1;
+        now_values.day = now_date.getDate();
+        var mins = now_date.getMinutes();
+        if (mins % 5 > 0) {
+            mins = mins + (5 - (mins % 5));
+        }
+        now_values.minute = mins;
+        if (mins === 0 && now_date.getMinutes() > 0) {
+            now_values.hour = now_date.getHours() + 1;
+        } else {
+            now_values.hour = now_date.getHours();
+        }
+        this.setValue(now_values);
+    },
+
     setValue: function(values, animated) {
         var key, slot, items = this.items.items,
             ln = items.length;
@@ -311,18 +312,17 @@ Ext.reg('datetimepicker', Ext.ux.touch.DateTimePicker);
 
 Ext.form.DateTimePicker = Ext.extend(Ext.form.Field, {
     ui: 'select',
-    
+
     picker: null,
 
-	display_format: 'd/m/Y h:i a',
-	
+    display_format: 'd/m/Y h:i a',
+
     destroyPickerOnHide: false,
-    
-	init_to_now: true,
-	
+
+    init_to_now: true,
+
     initComponent: function() {
         this.addEvents(
-            
             'change'
         );
 
@@ -332,7 +332,6 @@ Ext.form.DateTimePicker = Ext.extend(Ext.form.Field, {
         Ext.form.Text.superclass.initComponent.apply(this, arguments);
     },
 
-    
     getDatePicker: function() {
         if (!this.dateTimePicker) {
             if (this.picker instanceof Ext.ux.touch.DateTimePicker) {
@@ -344,49 +343,45 @@ Ext.form.DateTimePicker = Ext.extend(Ext.form.Field, {
             this.dateTimePicker.setValue(this.value || null);
 
             this.dateTimePicker.on({
-                scope : this,
+                scope: this,
                 change: this.onPickerChange,
-                hide  : this.onPickerHide
+                hide: this.onPickerHide
             });
         }
 
         return this.dateTimePicker;
     },
 
-    
     onMaskTap: function() {
         if (Ext.form.DateTimePicker.superclass.onMaskTap.apply(this, arguments) !== true) {
             return false;
         }
-        
+
         this.getDatePicker().show();
-		if ( this.init_to_now ) {
-			this.getDatePicker().setToDate(new Date());
-		}
+        if (this.init_to_now) {
+            this.getDatePicker().setToDate(new Date());
+        }
     },
-    
-    
+
     onPickerChange : function(picker, value) {
         this.setValue(value);
         this.fireEvent('change', this, this.getValue());
     },
-    
-    
+
     onPickerHide: function() {
         if (this.destroyPickerOnHide && this.dateTimePicker) {
             this.dateTimePicker.destroy();
         }
     },
 
-    
     setValue: function(value, animated) {
         if (this.dateTimePicker) {
-			if ( Ext.isDate(value) ) {
-            	this.dateTimePicker.setToDate(value);
-			} else {
-            	this.dateTimePicker.setValue(value, animated);
-			}
-            this.value = (value != null) ? this.dateTimePicker.getValue() : null;
+            if (Ext.isDate(value)) {
+                this.dateTimePicker.setToDate(value);
+            } else {
+                this.dateTimePicker.setValue(value, animated);
+            }
+            this.value = (value !== null) ? this.dateTimePicker.getValue() : null;
         } else {
             if (!Ext.isDate(value) && !Ext.isObject(value)) {
                 value = null;
@@ -402,22 +397,20 @@ Ext.form.DateTimePicker = Ext.extend(Ext.form.Field, {
         if (this.rendered) {
             this.fieldEl.dom.value = this.getValue(true);
         }
-        
+
         return this;
     },
-    
-    
+
     getValue: function(format) {
         var value = this.value || null;
         return (format && Ext.isDate(value)) ? value.format(this.display_format) : value;
     },
-    
-    
+
     onDestroy: function() {
         if (this.dateTimePicker) {
             this.dateTimePicker.destroy();
         }
-        
+
         Ext.form.DateTimePicker.superclass.onDestroy.call(this);
     }
 });
